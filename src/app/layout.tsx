@@ -1,12 +1,14 @@
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+// src/app/layout.tsx
+import { EmotionProvider } from "@/components/EmotionProvider";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="ja">
+      <head />
       <body>
-      {children}
+        <EmotionProvider>
+          {children}
+        </EmotionProvider>
       </body>
     </html>
   );
