@@ -73,18 +73,6 @@ export default function LoginPage() {
             <span className={styles.dividerText}>または</span>
           </div>
 
-          {/* <button type="button" className={styles.googleButton} onClick={handleGoogleLogin}>
-            <div className={styles.googleIconWrapper}>
-              <Image
-                src="/placeholder.svg?height=18&width=18"
-                alt="Google"
-                width={18}
-                height={18}
-                className={styles.googleIcon}
-              />
-            </div>
-            <span className={styles.googleButtonText}>Googleでログイン</span>
-          </button> */}
           <GoogleLoginButton />
 
         </form>

@@ -1,0 +1,38 @@
+/* src/components/AlbumCard.module.css */
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  .card {
+    width: 50%;
+    max-width: 600px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #201e1e;
+    color: #f1f1f1;
+  }
+  
+  .imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 200px; /* 好きな高さに調整できる */
+    background-color: #ccc;
+  }
+  
+  
+  @media (max-width: 580px) {
+    .wrapper {
+      /* wrapper は中央揃えのまま幅いっぱいに */
+      justify-content: flex-start;
+      padding: 0 0.5rem; /* 両サイドに少し余白を残す */
+    }
+  
+    .card {
+      width: 100% !important; /* 幅100% */
+      max-width: none;        /* max-width制限を解除 */
+    }
+  }
