@@ -11,6 +11,7 @@ export default function Home() {
   const [level, setLevel] = useState("");
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
+  const [freeNote, setfreeNote] = useState("");
 
   const handleSubmit = async () => {
     try {
@@ -26,6 +27,7 @@ export default function Home() {
             body_part: bodyPart,
             training_place: place,
             training_level: level,
+            freeNote: freeNote, 
           },
           query: "筋トレメニューを提案してください",
           user: "test-user-001",
@@ -88,6 +90,14 @@ export default function Home() {
         <option value="上級者">上級者</option>
         </select>
 
+        <label className={styles.label}>追加の希望・リクエスト（任意）:</label>
+        <input
+          className={styles.input}
+          value={freeNote}
+          onChange={(e) => setfreeNote(e.target.value)}
+          placeholder="例）膝に負担をかけたくない、短時間メニュー希望 など"
+        />
+
 
         <button onClick={handleSubmit} className={styles.button}>
           メニューを提案してもらう
@@ -104,7 +114,11 @@ export default function Home() {
       {result && (
         <div className={styles.result}>
           <h2>提案されたメニュー:</h2>
-          <p className={styles.support_message}>{result}</p>
+          <div className={styles.support_message}>
+          {result.split('\n').map((line, index) => (
+            <p key={index}>{line}</p>
+          ))}
+        </div>
         </div>
       )}
     </main>
