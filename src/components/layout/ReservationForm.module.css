@@ -1,66 +1,122 @@
-/* src/components/ReservationForm.module.css */
-
 .container {
-    max-width: 500px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: #0d0d0d;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
-    color: #fff;
-    font-family: "Roboto", "Noto Sans JP", sans-serif;
-  }
-  
-  .field {
-    margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.formInner {
+  background: rgba(20, 40, 60, 0.4);
+  backdrop-filter: blur(15px);
+  border-radius: 12px;
+  padding: 20px 15px;
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.field {
+  margin-bottom: 1.2rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #8be9fd;
+  letter-spacing: 0.5px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.85rem;
+  background: rgba(10, 20, 30, 0.5);
+  border: 1px solid rgba(100, 200, 255, 0.3);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px; /* モバイルでのフォームズームを防ぐため16px以上に */
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: none; /* iOSでのデフォルトスタイルを削除 */
+  appearance: none;
+}
+
+/* モバイルでの日付選択をより使いやすく */
+.someClassName input[type="datetime-local"]{
+  min-height: 44px; /* タップしやすいサイズに */
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: rgba(100, 200, 255, 0.7);
+  box-shadow: 0 0 0 3px rgba(100, 200, 255, 0.2);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: center; /* モバイルでは中央揃え */
+  margin-top: 1rem;
+}
+
+.button {
+  width: 100%; /* モバイルでは幅いっぱい */
+  padding: 0.85rem;
+  background: linear-gradient(135deg, #2196f3 0%, #0d47a1 100%);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+  letter-spacing: 0.5px;
+  min-height: 50px; /* タップしやすいサイズに */
+  -webkit-tap-highlight-color: transparent; /* タップ時のハイライトを削除 */
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #42a5f5 0%, #1565c0 100%);
+}
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.4);
+}
+
+/* レスポンシブデザイン */
+@media (min-width: 480px) {
+  .formInner {
+    padding: 25px 20px;
   }
   
   .label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
     font-size: 1rem;
-    color: #e0e0e0;
+  }
+}
+
+@media (min-width: 768px) {
+  .formInner {
+    padding: 30px;
   }
   
-  .input,
-  .textarea {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    background-color: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 0.95rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  
-  .input:focus,
-  .textarea:focus {
-    outline: none;
-    border-color: #ff4d4d;
-    box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.3);
-  }
-  
-  .textarea {
-    resize: vertical;
+  .formActions {
+    justify-content: flex-end; /* タブレット以上では右揃え */
   }
   
   .button {
-    width: 100%;
-    padding: 0.85rem;
-    background: linear-gradient(90deg, #ff416c, #ff4b2b);
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 1.05rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+    width: auto;
+    padding: 0.85rem 2rem;
   }
-  
-  .button:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(90deg, #ff4b2b, #ff416c);
-  }
-  
+}

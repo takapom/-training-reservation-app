@@ -1,0 +1,30 @@
+.navigationWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    z-index: 100;
+    position: relative;
+  }
+  
+  .navigation {
+    border-radius: 12px !important;
+    overflow: hidden;
+  }
+  
+  /* MUIのスタイルを上書きするためのグローバルスタイル */
+  .navigation .MuiBottomNavigationAction-root {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .navigation .Mui-selected {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+  
+  @media (max-width: 580px) {
+    .navigationWrapper {
+      padding: 0.25rem;
+    }
+  }
+  
