@@ -3,11 +3,11 @@
 import type React from "react"
 import { useState } from "react"
 import styles from "./page.module.css"
-import Image from "next/image"
 import GoogleLoginButton from "@/components/auth/GoogleLoginButton"
 
 
 export default function LoginPage() {
+  //現在はアドレスとパスワードではできないため飾り
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 

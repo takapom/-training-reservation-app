@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { onAuthStateChanged, type User, signOut } from "firebase/auth"
 import { auth } from "@/lib/firebase"
-import { collection, onSnapshot, query, orderBy } from "firebase/firestore"
+import { collection, onSnapshot, query, orderBy, deleteDoc, doc } from "firebase/firestore"
 import { db } from "@/lib/firebase"
 import Header from "@/components/layout/Header"
 import styles from "../page.module.css"
@@ -20,8 +20,8 @@ type Reservation = {
 export default function UserMyPage() {
   const { userId } = useParams()
   const router = useRouter()
-  const [user, setUser] = useState<User | null>(null)
-  const [reservations, setReservations] = useState<Reservation[]>([])
+  const [user, setUser] = useState<User | null>(null)//firebaseから取得したユーザー情報を保存
+  const [reservations, setReservations] = useState<Reservation[]>([])//firebaseから取得した予約情報を保存
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -31,22 +31,25 @@ export default function UserMyPage() {
       } else {
         setUser(u)
 
-        const q = query(collection(db, "users", String(userId), "reservations"), orderBy("reservedDateTime", "desc"))
+        const q = query(collection(db, "users", String(userId), "reservations"), 
+        orderBy("reservedDateTime", "desc"))
 
+        //onSnapshotはデータをリアルタイムで監視する関数
         const unsubscribe = onSnapshot(q, (snapshot) => {
           setIsLoading(false)
 
           if (snapshot.empty) {
-            console.log("予約が見つかりませんでした。")
-            setReservations([])
-            return
+          console.log("予約が見つかりませんでした。")
+          return
           }
 
+          //dataアロー関数が呼ばれた時の返り値がreturn内の値
           const data = snapshot.docs.map((doc) => {
-            const d = doc.data()
-            console.log("予約データ取得:", d)
+          const d = doc.data()
+          //予約データを確認するためのログ出力
+          console.log("予約データ取得:", d)
 
-            // Add a status field for demonstration
+            //予約日時をDate型に変換→firebaseのTimestamp型なのでJSの型に変換している
             const reservationDate = d.reservedDateTime?.toDate()
             const status = reservationDate > new Date() ? "upcoming" : "past"
 
@@ -60,7 +63,6 @@ export default function UserMyPage() {
 
           setReservations(data)
         })
-
         return () => unsubscribe()
       }
     })
@@ -72,6 +74,16 @@ export default function UserMyPage() {
     signOut(auth).then(() => {
       router.push("/")
     })
+  }
+
+  const handleCancelReservation = async (reservationId: string) => {
+    try {
+      const reservationRef = doc(db, "users", String(userId), "reservations", reservationId)
+      await deleteDoc(reservationRef)
+      console.log("予約が正常にキャンセルされました")
+    } catch (error) {
+      console.error("予約のキャンセルに失敗しました:", error)
+    }
   }
 
   if (isLoading) {
@@ -166,11 +178,14 @@ export default function UserMyPage() {
                     </div>
                     <div className={styles.reservationActions}>
                       {res.status === "upcoming" && (
-                        <>
-                          <button className={styles.actionButton}>Modify</button>
-                          <button className={`${styles.actionButton} ${styles.cancelButton}`}>Cancel</button>
-                        </>
+                        <button className={styles.actionButton}>Modify</button>
                       )}
+                      <button 
+                        className={`${styles.actionButton} ${styles.cancelButton}`}
+                        onClick={() => handleCancelReservation(res.id)}
+                      >
+                        Cancel
+                      </button>
                       {res.status === "past" && <button className={styles.actionButton}>Details</button>}
                     </div>
                   </li>

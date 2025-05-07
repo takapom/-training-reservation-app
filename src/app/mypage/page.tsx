@@ -12,7 +12,7 @@ export default function MyPageIndex() {
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
-      if (user?.uid) {
+      if (user?.uid) {//「？」はuserが空じゃなければ
         router.replace(`/mypage/${user.uid}`);
       } else {
         router.replace("/login");

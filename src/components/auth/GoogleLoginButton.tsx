@@ -11,7 +11,7 @@ export default function GoogleLoginButton(){
         try{
             const result = await signInWithPopup(auth, googleProvider);
             const user = result.user;
-            console.log("ログインできた！", user);
+            console.log("ログイン成功しました！", user);
 
             router.push("/mypage");
         } catch(error){

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useState } from "react"
 import { useRouter } from "next/navigation"
 import BottomNavigation from "@mui/material/BottomNavigation"
 import BottomNavigationAction from "@mui/material/BottomNavigationAction"
@@ -11,7 +12,7 @@ import LoginIcon from "@mui/icons-material/Login"
 import styles from "./header.module.css"
 
 export default function LabelBottomNavigation() {
-  const [value, setValue] = React.useState("schedule")
+  const [value, setValue] = useState("schedule")
   const router = useRouter()
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {

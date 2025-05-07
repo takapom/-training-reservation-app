@@ -74,7 +74,7 @@ export default function EquipmentDetailPage() {
               )}
               {name === "サイドプレスルーム" && (
                 <Image
-                  src="/sidepress.webp"
+                  src="/kintore.webp"
                   alt="サイドプレスルームの写真"
                   width={400}
                   height={300}
