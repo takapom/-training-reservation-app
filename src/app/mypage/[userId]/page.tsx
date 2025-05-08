@@ -9,7 +9,7 @@ import { db } from "@/lib/firebase"
 import Header from "@/components/layout/Header"
 import styles from "../page.module.css"
 import Link from "next/link"
-import Image from "next/image"
+
 
 
 type Reservation = {
@@ -110,7 +110,13 @@ export default function UserMyPage() {
             <div className={styles.profileHeader}>
               <div className={styles.avatarContainer}>
                 {user?.photoURL ? (
-                  <Image src={user.photoURL || "/placeholder.svg"} alt="avatar" className={styles.avatar} />
+                  <div className={styles.avatarWrapper}>
+                    <img 
+                      src={user.photoURL} 
+                      alt="avatar" 
+                      className={styles.avatar}
+                    />
+                  </div>
                 ) : (
                   <div className={styles.avatarPlaceholder}>{user?.displayName?.charAt(0) || "U"}</div>
                 )}

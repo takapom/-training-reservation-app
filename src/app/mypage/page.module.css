@@ -115,17 +115,19 @@
   gap: 2rem;
 }
 
-.avatarContainer {
-  position: relative;
-}
-
-.avatar {
+.avatarWrapper {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  object-fit: cover;
+  overflow: hidden;
   border: 3px solid var(--primary-color);
   box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .avatarPlaceholder {

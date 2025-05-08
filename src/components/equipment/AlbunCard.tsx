@@ -34,7 +34,7 @@ const AlbumCard: FC<AlbumCardProps> = ({
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
-        <Image src={imageUrl || "/placeholder.svg"} alt={`${name}の写真`} fill style={{ objectFit: "cover" }} />
+        <Image src={imageUrl || "/placeholder.png"} alt={`${name}の写真`} fill style={{ objectFit: "cover" }} />
         <div className={styles.imageDimmer}></div>
       </div>
 
