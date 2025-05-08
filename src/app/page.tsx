@@ -4,7 +4,7 @@ import type React from "react"
 import { useState } from "react"
 import styles from "./page.module.css"
 import GoogleLoginButton from "@/components/auth/GoogleLoginButton"
-
+import "@/app/globals.css"
 
 export default function LoginPage() {
   //現在はアドレスとパスワードではできないため飾り
@@ -16,12 +16,7 @@ export default function LoginPage() {
     // Handle login logic here
     console.log("Login attempt with:", email)
   }
-
-  const handleGoogleLogin = () => {
-    // Handle Google login logic here
-    console.log("Google login initiated")
-  }
-
+  
   return (
     <main className={styles.container}>
       <div className={styles.loginBox}>

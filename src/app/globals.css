@@ -1,0 +1,22 @@
+/* Variables for easy maintenance */
+:root {
+    /* 既存の変数 */
+    --primary-color: #00e5ff;  /* 更新 */
+    --secondary-color: #7b2ff7;  /* 更新 */
+    --accent-color: #ff2a6d;  /* 更新 */
+    --text-color: #ffffff;
+    --text-secondary: #b3b3b3;
+    --input-bg: #2a2a2a;
+    --input-border: #444444;
+    --button-hover: #ff6b6b;
+    --transition-speed: 0.3s;
+  
+    /* 新しい変数を追加 */
+    --background-dark: #0a0b1a;
+    --background-light: #1a1b3a;
+    --text-tertiary: rgba(255, 255, 255, 0.5);
+    --glass-background: rgba(20, 21, 45, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+    --neon-glow: 0 0 10px rgba(0, 229, 255, 0.5), 0 0 20px rgba(0, 229, 255, 0.3);
+  }

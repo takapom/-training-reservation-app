@@ -3,11 +3,10 @@
 
 import { useState } from "react";
 import styles from "./ReservationForm.module.css";
-import {collection, doc, setDoc, Timestamp,} from "firebase/firestore"
+import { doc, setDoc, Timestamp } from "firebase/firestore"
 import { db } from "@/lib/firebase";
-import { auth } from "@/lib/firebase"; // ← これを追加
-import { useParams } from "next/navigation"; // 追加
-
+import { auth } from "@/lib/firebase";
+import { useParams } from "next/navigation";
 
 export default function ReservationForm() {
   const [dateTime, setDateTime] = useState("");

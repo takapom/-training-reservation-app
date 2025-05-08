@@ -7,7 +7,7 @@ import Image from "next/image"
 export type AlbumCardProps = {
   name: string
   description: string
-  imageUrl: any
+  imageUrl: string
   maxUsers: number
   targetMuscles: string[]
   currentReservations: number

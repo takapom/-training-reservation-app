@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import styles from "./page.module.css"; // 🔥 追加
+import "@/app/globals.css";
 
 export default function MyPageIndex() {
   const router = useRouter();

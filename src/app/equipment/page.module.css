@@ -149,8 +149,10 @@
 }
 
 .sectionTitle {
-  font-size: 1.5rem;
-  color: #8be9fd;
+  font-size: 1.7rem;
+  font-weight: bold;
+  text-align: center;
+  color: #1285c4;
   margin-bottom: 15px;
   text-shadow: 0 0 10px rgba(100, 200, 255, 0.3);
 }
