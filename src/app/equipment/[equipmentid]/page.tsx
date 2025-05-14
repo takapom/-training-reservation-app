@@ -9,17 +9,17 @@ import { EquipmentContext } from "@/contexts/EquipmentContext";
 import ReservationForm from "@/components/layout/ReservationForm";
 
 export default function EquipmentDetailPage() {
-  const { equipmentId } = useParams();
+  const { equipmentid } = useParams();
   const equipmentList = useContext(EquipmentContext);
-  const equipment = equipmentList.find((item) => item.id === equipmentId);
+  const equipment = equipmentList.find((item) => item.id === equipmentid);
 
   // URLパラメータから表示用の日本語名称を決定
   const name =
-    equipmentId === "dumbbell_room"
+    equipmentid === "dumbbell_room"
       ? "ダンベルルーム"
-      : equipmentId === "bench_press_room"
+      : equipmentid === "bench_press_room"
       ? "ベンチプレスルーム"
-      : equipmentId === "side_press_room"
+      : equipmentid === "side_press_room"
       ? "サイドプレスルーム"
       : "";
 
@@ -46,7 +46,7 @@ export default function EquipmentDetailPage() {
             <h1 className={styles.title}>{equipment.name}</h1>
             <div className={styles.equipmentInfo}>
               <span className={styles.badge}>利用可能</span>
-              <span className={styles.equipmentId}>ID: {equipmentId}</span>
+              <span className={styles.equipmentId}>ID: {equipmentid}</span>
             </div>
           </div>
 
